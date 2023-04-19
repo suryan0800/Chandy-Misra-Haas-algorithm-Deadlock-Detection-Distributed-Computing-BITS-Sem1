@@ -46,6 +46,36 @@ python chandy-mishra-haas-algo.py ./input-no-deadlock-in-cycle-but-deadlock-exis
 python chandy-mishra-haas-algo.py ./input-multicycle-deadlock.txt
 ```
 
+## Sample Output of the Program
+```
+Input File Name/Path:  input.txt
+
+Initiator Node Name:  11
+
+WFG Node Edges:
+11  ->  21
+11  ->  32
+21  ->  24
+24  ->  54
+44  ->  24
+54  ->  11
+32  ->  33
+
+Wait For Graph:
+{'11': Node(node_name: 11, depends_on: ['21', '32'], dependent: {}), '21': Node(node_name: 21, depends_on: ['24'], dependent: {}), '24': Node(node_name: 24, depends_on: ['54'], dependent: {}), '44': Node(node_name: 44, depends_on: ['24'], dependent: {}), '54': Node(node_name: 54, depends_on: ['11'], dependent: {}), '32': Node(node_name: 32, depends_on: ['33'], dependent: {})}
+
+Deadlock Detection Algorithm Simulation Initiated:
+Started probing for Deadlock Detection
+Probe(initiator: 11, sender: 11, receiver: 21)
+Probe(initiator: 11, sender: 11, receiver: 32)
+Probe(initiator: 11, sender: 21, receiver: 24)
+Probe(initiator: 11, sender: 32, receiver: 33)
+One Probe discarded:  Probe(initiator: 11, sender: 32, receiver: 33)
+Probe(initiator: 11, sender: 24, receiver: 54)
+Probe(initiator: 11, sender: 54, receiver: 11)
+Deadlock Detected.
+```
+
 ## Data Structure:
 - Each Process maintains:
     - Dependent array with size to the number of nodes
